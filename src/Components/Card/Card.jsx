@@ -3,8 +3,8 @@ import styles from './Card.module.css';
 import { FetchApi } from '../Api/Api';
 
 function Card() {
-    const [data, setData] = useState([]); // Store country data
-    const [searchQuery, setSearchQuery] = useState(''); // Track user input for searching
+    const [data, setData] = useState([]); 
+    const [searchQuery, setSearchQuery] = useState(''); 
 
     useEffect(() => {
         const getData = async () => {
@@ -12,39 +12,38 @@ function Card() {
                 const response = await FetchApi(); 
                 setData(response); 
             } catch (error) {
-                console.error("Failed to fetch data", error); // Added error handling
+                console.error("Failed to fetch data", error); // Error handling
             }
         };
         getData();
     }, []);
 
     const handleChange = (e) => {
-        setSearchQuery(e.target.value); // Update search query on input change
+        setSearchQuery(e.target.value); 
     };
 
     const searchedData = data.filter(item =>
-        item.name.common.toLowerCase().includes(searchQuery.toLowerCase()) // Filter countries based on search query
+        item.name.common.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     if (!data.length) {
-        return <div>Loading...</div>; // Show loading while data is being fetched
+        return <div>Loading...</div>; 
     }
 
     return (
         <div>
             <div className={styles.search}>
                 <input 
-                    style={{ width: '600px', height: '30px', textAlign: 'left' }} 
                     type="text" 
-                    placeholder="Search Country"
+                    placeholder="Search for countries"
                     value={searchQuery} 
-                    onChange={handleChange} // Update search query on input change
+                    onChange={handleChange} 
                 />
             </div>
             <div className={styles.container}>
                 {searchedData.map((item, index) => (
-                    <div key={index} className={styles.countryCard}> 
-                        <img src={item.flags.png} alt={item.name.common} className={styles.image} />
+                    <div key={index} className={styles.countryCard}>  
+                        <img src={item.flags.png} alt={item.name.common} className={styles.image} /> 
                         <p className={styles.title}>{item.name.common}</p>
                     </div>
                 ))}
