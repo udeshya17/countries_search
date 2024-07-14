@@ -22,9 +22,9 @@ function Card() {
         item.name.common.toLowerCase().includes(searchQuery.toLowerCase()) // Filter countries based on search query
     );
 
-    if (!data.length) {
-        return <div>Loading...</div>; // Show loading while data is being fetched
-    }
+    // if (!data.length) {
+    //     return <div>Loading...</div>; // Show loading while data is being fetched
+    // }
 
     return (
         <div>
@@ -37,9 +37,9 @@ function Card() {
                     onChange={handleChange} // Update search query on input change
                 />
             </div>
-            <div className={styles.countryCard}>
+            <div className={styles.container}>
                 {searchedData.map((item, index) => (
-                    <div key={index} className={styles.content}> 
+                    <div key={index} className={styles.countryCard}> 
                         <img src={item.flags.png} alt={item.abbr} className={styles.image} />
                         <p className={styles.title}>{item.name.common}</p>
                     </div>

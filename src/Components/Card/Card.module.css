@@ -1,4 +1,4 @@
-.countryCard {
+.container{
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -7,7 +7,7 @@
 
 }
 
-.content {
+.countryCard{
     /* border: 0.3px solid black; */
     height: 150px;
     width: 150px;
@@ -18,12 +18,12 @@
 
 }
 
-.image {
+.image{
     height: 100px;
     width: 100px;
 }
 
-.title {
+.title{
     text-align: center;
 }
 
