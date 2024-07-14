@@ -8,8 +8,12 @@ function Card() {
 
     useEffect(() => {
         const getData = async () => {
-            let response = await FetchApi(); // Fetch country data from API
-            setData(response); // Store fetched data
+            try {
+                const response = await FetchApi(); 
+                setData(response); 
+            } catch (error) {
+                console.error("Failed to fetch data", error); // Added error handling
+            }
         };
         getData();
     }, []);
@@ -22,9 +26,9 @@ function Card() {
         item.name.common.toLowerCase().includes(searchQuery.toLowerCase()) // Filter countries based on search query
     );
 
-    // if (!data.length) {
-    //     return <div>Loading...</div>; // Show loading while data is being fetched
-    // }
+    if (!data.length) {
+        return <div>Loading...</div>; // Show loading while data is being fetched
+    }
 
     return (
         <div>
@@ -40,7 +44,7 @@ function Card() {
             <div className={styles.container}>
                 {searchedData.map((item, index) => (
                     <div key={index} className={styles.countryCard}> 
-                        <img src={item.flags.png} alt={item.abbr} className={styles.image} />
+                        <img src={item.flags.png} alt={item.name.common} className={styles.image} />
                         <p className={styles.title}>{item.name.common}</p>
                     </div>
                 ))}
