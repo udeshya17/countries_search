@@ -37,9 +37,9 @@ function Card() {
                     onChange={handleChange} // Update search query on input change
                 />
             </div>
-            <div className={styles.container}>
+            <div className={styles.countryCard}>
                 {searchedData.map((item, index) => (
-                    <div key={index} className={styles.countryCard}> 
+                    <div key={index} className={styles.content}> 
                         <img src={item.flags.png} alt={item.abbr} className={styles.image} />
                         <p className={styles.title}>{item.name.common}</p>
                     </div>
