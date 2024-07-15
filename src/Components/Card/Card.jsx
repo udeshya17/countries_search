@@ -45,7 +45,7 @@ function Card() {
                 {searchedData.map((item, index) => (
                     <div key={index} className={styles.countryCard}> 
                         <img src={item.flags.png} alt={item.name.common} className={styles.image} /> 
-                        <p className={styles.title}>{item.name.common}</p>
+                        <h2 className={styles.title}>{item.name.common}</h2>
                     </div>
                 ))}
             </div>
