@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styles from './Card.module.css';
+// import   from './Card.module.css';
+import './Card.css';
+
 import { FetchApi } from '../Api/Api';
 
 function Card() {
@@ -32,7 +34,7 @@ function Card() {
 
     return (
         <div>
-            <div className={styles.search}>
+            <div className='search'>
                 <input 
                     type="text" 
                     placeholder="Search for countries"
@@ -41,11 +43,11 @@ function Card() {
                     style={{width: '600px', height: '30px'}} 
                 />
             </div>
-            <div className={styles.container}>
+            <div className='container'>
                 {searchedData.map((item, index) => (
-                    <div key={index} className={styles.countryCard}> 
-                        <img src={item.flags.png} alt={item.name.common} className={styles.image} /> 
-                        <h2 className={styles.title}>{item.name.common}</h2>
+                    <div key={index} className='countryCard'> 
+                        <img src={item.flags.png} alt={item.name.common} className='image' /> 
+                        <h2 className='title'>{item.name.common}</h2>
                     </div>
                 ))}
             </div>
