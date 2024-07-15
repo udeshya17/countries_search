@@ -12,7 +12,7 @@ function Card() {
                 const response = await FetchApi(); 
                 setData(response); 
             } catch (error) {
-                console.error("Failed to fetch data", error); // Error handling
+                console.error("Failed to fetch data", error); 
             }
         };
         getData();
@@ -37,12 +37,13 @@ function Card() {
                     type="text" 
                     placeholder="Search for countries"
                     value={searchQuery} 
-                    onChange={handleChange} 
+                    onChange={handleChange}
+                    style={{width: '600px', height: '30px'}} 
                 />
             </div>
             <div className={styles.container}>
                 {searchedData.map((item, index) => (
-                    <div key={index} className={styles.countryCard}>  
+                    <div key={index} className={styles.countryCard}> 
                         <img src={item.flags.png} alt={item.name.common} className={styles.image} /> 
                         <p className={styles.title}>{item.name.common}</p>
                     </div>
